@@ -35,3 +35,18 @@ function displayMealCards(meals, showAll = false) {
 
   showAllButton.style.display = meals.length > 5 && !showAll ? 'block' : 'none';
 }
+
+
+searchButton.addEventListener('click', async () => {
+  const searchText = searchInput.value.trim();
+  if (searchText) {
+    const fetchedMeals = await fetchMeals(searchText);
+    meals = fetchedMeals || [];
+    displayMealCards(meals);
+  }
+});
+
+
+showAllButton.addEventListener('click', () => {
+  displayMealCards(meals, true);
+});
