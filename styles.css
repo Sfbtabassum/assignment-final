@@ -3,15 +3,15 @@ h1 {
   font-weight: bold;
 }
 
-
-
-
-
-
-
-
-
-
-
-
- 
+.meal-card {
+    margin-bottom: 20px;
+  }
+  
+  .meal-card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .meal-card .card-body {
+    text-align: center;
+  }
