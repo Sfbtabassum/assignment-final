@@ -12,3 +12,26 @@ async function fetchMeals(searchText) {
   const data = await response.json();
   return data.meals;
 }
+
+
+function displayMealCards(meals, showAll = false) {
+  mealResults.innerHTML = '';
+  visibleMeals = showAll ? meals : meals.slice(0, 5);
+
+  visibleMeals.forEach(meal => {
+    const mealCard = document.createElement('div');
+    mealCard.className = 'col-md-6 col-lg-4';
+    mealCard.innerHTML = `
+      <div class="card meal-card">
+        <img src="${meal.strMealThumb}" class="card-img-top" alt="${meal.strMeal}">
+        <div class="card-body">
+          <h5 class="card-title">${meal.idMeal} - ${meal.strMeal}</h5>
+          <p class="card-text">${meal.strInstructions.slice(0, 100)}...</p>
+        </div>
+      </div>
+    `;
+    mealResults.appendChild(mealCard);
+  });
+
+  showAllButton.style.display = meals.length > 5 && !showAll ? 'block' : 'none';
+}
